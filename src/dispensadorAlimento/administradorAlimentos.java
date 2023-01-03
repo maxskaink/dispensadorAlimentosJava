@@ -5,14 +5,20 @@ import java.util.ArrayList;
 public class administradorAlimentos {
 
     private ArrayList<Contenedor> contenedores= new ArrayList<Contenedor>();
+<<<<<<< Updated upstream
 
     private ArrayList<listaSemana> listasPorSemana = new ArrayList<listaSemana>();
+=======
+    private ArrayList<Alimento> AlimentosDisponibles = new ArrayList<Alimento>();
+    private ArrayList<listaSemana> listaPorSemana = new ArrayList<listaSemana>();
+>>>>>>> Stashed changes
 
 
     public ArrayList<Contenedor> getContenedores(){
         return contenedores;
     }
 
+<<<<<<< Updated upstream
     public void borrarAlimentoDeContenedor(int posicionContenedor, String nombreAlimento ){
         contenedores.get(posicionContenedor).quitarAlimento(nombreAlimento);
     }
@@ -29,5 +35,19 @@ public class administradorAlimentos {
             return new listaSemana("vacio");
         }
     }
+=======
+    public void borrarAlimentosAdministrador(String nombreAlimento){
+        int i;
+
+        for(i= 0; i< (AlimentosDisponibles.size()-1); i++){
+            if(AlimentosDisponibles.get(i).getNombre().equals(nombreAlimento)){
+                AlimentosDisponibles.remove(i);
+            }
+        }
+    }
+    public void agregarAlimentoAdministrador(Alimento objAlimento){
+        this.AlimentosDisponibles.add(objAlimento);
+    }
+>>>>>>> Stashed changes
 
 }
