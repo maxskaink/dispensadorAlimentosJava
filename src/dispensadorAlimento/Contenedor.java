@@ -15,8 +15,12 @@ public class Contenedor {
     public void agregarAlimento(Alimento objAlimento){
         alimentosDisponibles.add(objAlimento);
     }
-    public void quitarAlimento(int posAlimento){
-        alimentosDisponibles.remove(posAlimento);
+    public void quitarAlimento(String nombreAlimento){
+        for (int contador= 0; contador < alimentosDisponibles.size(); contador++ ){
+            if(alimentosDisponibles.get(contador).getNombre().equals(nombreAlimento)){
+                alimentosDisponibles.remove(contador);
+            }
+        }
     }
 
 
