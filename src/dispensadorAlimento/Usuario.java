@@ -20,12 +20,6 @@ public class Usuario {
     }
 
 
-
-
-
-
-
-
     //GET AND SETTER
     public String getNombre() {
         return nombre;
