@@ -1,15 +1,22 @@
 package dispensadorAlimento;
 
+import java.util.ArrayList;
+
 public class Usuario {
 
     private String nombre;
     private String cantComida;
     private int edad;
+    private ArrayList<Alimento>  AlimentoRef= new ArrayList<Alimento>();
 
     public Usuario (String nom, String cant, int ed){
         this.cantComida = cant;
         this.edad = ed;
         this.nombre = nom;
+    }
+
+    public void AgregarAlimento(Alimento a){
+        AlimentoRef.add(a);
     }
 
 

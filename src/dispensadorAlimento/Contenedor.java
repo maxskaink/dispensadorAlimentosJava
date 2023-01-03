@@ -12,8 +12,15 @@ public class Contenedor {
     }
 
 
+    public void agregarAlimento(Alimento objAlimento){
+        alimentosDisponibles.add(objAlimento);
+    }
+    public void quitarAlimento(int posAlimento){
+        alimentosDisponibles.remove(posAlimento);
+    }
 
 
+    //GET AND SETTER
     public String getNombre() {
         return nombre;
     }
