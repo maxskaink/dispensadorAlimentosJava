@@ -26,6 +26,7 @@ public class Alimento {
         if(cantidadTotal<0 ||cantidadAConsumir < 0 ){
             throw new RuntimeException();
         }
+        this.cantidad = cantidadTotal;
     }
 
     public String getNombre() {
