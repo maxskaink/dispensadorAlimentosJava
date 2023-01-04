@@ -22,7 +22,7 @@ public class Contenedor {
                 existeAlimento.set(true);
             }
         } );
-
+        //TODO esta mal corregir
         if(!existeAlimento.get()) throw new RuntimeException();
     }
 

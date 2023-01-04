@@ -21,7 +21,12 @@ public class Main {
 
         APP.getContenedores().get(0).agregarAlimento( new Alimento("manzana", "fruta", 2 ));
 
+<<<<<<< Updated upstream
         APP.consumirAlimentoDeContenedor(0,"manzana",1);
+=======
+        APP.consumirAlimentoDeContenedor(0,"manzana");//TODO corregir
+
+>>>>>>> Stashed changes
 
 
 
