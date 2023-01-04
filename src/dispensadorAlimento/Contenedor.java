@@ -35,7 +35,6 @@ public class Contenedor {
         }
     }
 
-
     //GET AND SETTER
     public String getNombre() {
         return nombre;
