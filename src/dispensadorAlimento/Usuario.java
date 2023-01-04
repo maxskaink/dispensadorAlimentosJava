@@ -5,11 +5,11 @@ import java.util.ArrayList;
 public class Usuario {
 
     private String nombre;
-    private String cantComida;
+    private int cantComida;
     private int edad;
     private ArrayList<Alimento>  AlimentoRef= new ArrayList<Alimento>();
 
-    public Usuario (String nom, String cant, int ed){
+    public Usuario (String nom, int cant, int ed){
         this.cantComida = cant;
         this.edad = ed;
         this.nombre = nom;
@@ -27,10 +27,10 @@ public class Usuario {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    public String getCantComida() {
+    public int getCantComida() {
         return cantComida;
     }
-    public void setCantComida(String cantComida) {
+    public void setCantComida(int cantComida) {
         this.cantComida = cantComida;
     }
     public int getEdad() {
@@ -38,5 +38,8 @@ public class Usuario {
     }
     public void setEdad(int edad) {
         this.edad = edad;
+    }
+    public String setRol(){
+        return "USUARIO";
     }
 }

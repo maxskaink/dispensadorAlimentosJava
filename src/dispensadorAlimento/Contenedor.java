@@ -1,6 +1,7 @@
 package dispensadorAlimento;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Contenedor {
 
@@ -13,7 +14,16 @@ public class Contenedor {
 
 
     public void agregarAlimento(Alimento objAlimento){
-        alimentosDisponibles.add(objAlimento);
+        AtomicBoolean existeAlimento= new AtomicBoolean(false);
+
+        alimentosDisponibles.forEach( alimentoDisponible ->{
+            if (objAlimento.getNombre().equals(alimentoDisponible.getNombre())){
+                alimentosDisponibles.add(objAlimento);
+                existeAlimento.set(true);
+            }
+        } );
+
+        if(!existeAlimento.get()) throw new RuntimeException();
     }
 
 
@@ -27,7 +37,8 @@ public class Contenedor {
         }
 
     }
-    public void quitarAlimento(String nombreAlimento){
+    public void quitarAlimento(String nombreAlimento, int cantidadConsumo){
+        //TODO
         for (int contador= 0; contador < alimentosDisponibles.size(); contador++ ){
             if(alimentosDisponibles.get(contador).getNombre().equals(nombreAlimento)){
                 alimentosDisponibles.remove(contador);

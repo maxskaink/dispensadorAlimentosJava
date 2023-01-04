@@ -10,13 +10,22 @@ public class administradorAlimentos {
     private ArrayList<listaSemana> listasPorSemana = new ArrayList<listaSemana>();
 
     private ArrayList<Alimento> AlimentosDisponibles = new ArrayList<Alimento>();
+    private Usuario usuarioEnSecion;
+
+    public administradorAlimentos(){
+        this.usuarios.add( new Administrador("Padre",0,99,"admin"));
+    }
+
+    public void iniciarSecion(int posicionUsuario){
+        this.usuarioEnSecion = usuarios.get(posicionUsuario);
+    }
 
     public ArrayList<Contenedor> getContenedores(){
         return contenedores;
     }
 
-    public void borrarAlimentoDeContenedor(int posicionContenedor, String nombreAlimento ){
-        contenedores.get(posicionContenedor).quitarAlimento(nombreAlimento);
+    public void consumirAlimentoDeContenedor(int posicionContenedor, String nombreAlimento, int cantidadConusmo){
+        contenedores.get(posicionContenedor).quitarAlimento(nombreAlimento, cantidadConusmo);
     }
 
     public void agregarContenedor(String nombreContenedor){
@@ -42,7 +51,14 @@ public class administradorAlimentos {
         }
     }
     public void agregarAlimentoAdministrador(Alimento objAlimento){
-        this.AlimentosDisponibles.add(objAlimento);
+        if (this.usuarioEnSecion.setRol().equals("ADMIN")){
+            this.AlimentosDisponibles.add(objAlimento);
+        }else {
+            throw new RuntimeException();
+        }
     }
 
+    public Usuario getUsuarioEnSecion() {
+        return usuarioEnSecion;
+    }
 }
