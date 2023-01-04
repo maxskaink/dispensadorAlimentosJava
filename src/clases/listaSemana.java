@@ -1,4 +1,4 @@
-package dispensadorAlimento;
+package clases;
 
 import java.util.ArrayList;
 

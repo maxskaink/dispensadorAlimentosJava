@@ -1,8 +1,7 @@
-import dispensadorAlimento.Alimento;
-import dispensadorAlimento.administradorAlimentos;
+package dispensadorAlimentos;
 
-import javax.swing.plaf.synth.SynthTextAreaUI;
-import java.util.concurrent.ExecutionException;
+import clases.Alimento;
+import clases.administradorAlimentos;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,8 +21,7 @@ public class Main {
         APP.getContenedores().get(0).agregarAlimento( new Alimento("manzana", "fruta", 2 ));
 
 
-        APP.consumirAlimentoDeContenedor(0,"manzana",1);
-        //APP.consumirAlimentoDeContenedor(0,"manzana");//TODO corregir
+        APP.consumirAlimentoDeContenedor(0, new Alimento("manzana", "fruta", 1));
 
 
 

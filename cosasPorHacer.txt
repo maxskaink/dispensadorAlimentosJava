@@ -1,0 +1,13 @@
+Funciones que hay que realizar:
+
+- Se debe poder agregar y consumir, alimentos al contenedor:
+	- Al agregar alimentos se debe validar que los alimentos existan (listo)
+	- Al agregar alimentos se debe pedir la cantidad
+	- Al consumir alimentos se debe validar que tenga sentido la cantidad extraida
+	- Al consumir alimentos se debe sumar la cantidad de alimentos consumido
+	(Creo que al agregar y consumri alimentos al llamar el metodo que se cree se debe mandar como parametro el objeto haciendo que la cantidad
+	 especifique lo que se va a agregar o retirar y que si se quita la cantidad sea la cantidad que se va a consumir, al mismo tiempo este alimento
+	 se debe agregar al usuario)
+	 - Al agregar alimento se debe validar si ya existe y si existe solo sea sumar la cantidad
+	 - Al quitar alimentos se debe validar que si llega a cero se elimine el alimento.
+	 - Se debe validar que si el usuario es niño no pueda consumir mas de 5 dulces

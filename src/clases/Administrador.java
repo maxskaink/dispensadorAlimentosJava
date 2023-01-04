@@ -1,4 +1,4 @@
-package dispensadorAlimento;
+package clases;
 
 public class   Administrador  extends Usuario{
     private String rol;

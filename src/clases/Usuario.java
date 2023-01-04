@@ -1,4 +1,4 @@
-package dispensadorAlimento;
+package clases;
 
 import java.util.ArrayList;
 
@@ -39,7 +39,11 @@ public class Usuario {
     public void setEdad(int edad) {
         this.edad = edad;
     }
-    public String setRol(){
+    public String getRol(){
         return "USUARIO";
+    }
+
+    public int getCantDulces() {
+        return 0;
     }
 }
