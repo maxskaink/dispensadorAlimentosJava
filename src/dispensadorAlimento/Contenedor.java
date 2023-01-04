@@ -9,7 +9,7 @@ public class Contenedor {
     private ArrayList<Alimento> alimentosDisponibles = new ArrayList<Alimento>();
 
     public Contenedor(String nombre){
-        this.setNombre(nombre);
+        this.nombre = nombre;
     }
 
 
@@ -27,23 +27,37 @@ public class Contenedor {
     }
 
 
-    public void quitarAlimento(String nombreAlimento, NIño niño){
-        if(niño.getCantDulces() <= 5){
-            for (int contador= 0; contador < alimentosDisponibles.size(); contador++ ){
-                if(alimentosDisponibles.get(contador).getNombre().equals(nombreAlimento)){
-                    alimentosDisponibles.remove(contador);
+    public void quitarAlimento(String nombreAlimento, NIño niño, int cantidadConsumo) {
+        if (niño.getCantDulces() <= 5) {
+            for (int contador = 0; contador < alimentosDisponibles.size(); contador++) {
+                if (alimentosDisponibles.get(contador).getNombre().equals(nombreAlimento)) {
+                    if (cantidadConsumo <= alimentosDisponibles.get(contador).getCantidad()) {
+                        int cantidad = alimentosDisponibles.get(contador).getCantidad() - cantidadConsumo;
+                        alimentosDisponibles.get(contador).setCantidad(cantidad);
+                        if (alimentosDisponibles.get(contador).getCantidad() == 0) {
+                            alimentosDisponibles.remove(contador);
+                        }
+                    }
                 }
             }
-        }
 
+        }
     }
     public void quitarAlimento(String nombreAlimento, int cantidadConsumo){
-        //TODO
-        for (int contador= 0; contador < alimentosDisponibles.size(); contador++ ){
-            if(alimentosDisponibles.get(contador).getNombre().equals(nombreAlimento)){
-                alimentosDisponibles.remove(contador);
+
+            for (int contador= 0; contador < alimentosDisponibles.size(); contador++ ){
+                if(alimentosDisponibles.get(contador).getNombre().equals(nombreAlimento)){
+                    if(cantidadConsumo <= alimentosDisponibles.get(contador).getCantidad()){
+                        int cantidad = alimentosDisponibles.get(contador).getCantidad() - cantidadConsumo;
+                        alimentosDisponibles.get(contador).setCantidad(cantidad);
+                        if (alimentosDisponibles.get(contador).getCantidad() == 0){
+                            alimentosDisponibles.remove(contador);
+                        }
+                    }
+                }
             }
-        }
+
+
     }
 
     //GET AND SETTER

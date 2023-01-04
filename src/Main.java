@@ -21,7 +21,7 @@ public class Main {
 
         APP.getContenedores().get(0).agregarAlimento( new Alimento("manzana", "fruta", 2 ));
 
-        APP.consumirAlimentoDeContenedor(0,"manzana");
+        APP.consumirAlimentoDeContenedor(0,"manzana",1);
 
 
 
