@@ -29,6 +29,7 @@ public class Contenedor {
             if(existeAlimentoEn(objAlimento, adminAlimentos.getAlimentosDisponibles()) != 0){
                 existeAlimento.set(true);
                 this.alimentosDisponibles.add( objAlimento );
+                this.alimentosDisponibles.get( this.alimentosDisponibles.size() ).asignarContenedor(this);
             }
         }
 
