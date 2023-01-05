@@ -28,7 +28,7 @@ public class administradorAlimentos {
 
         if(this.usuarioEnSecion.getRol().equals("NIÑO")){
             if( (this.usuarioEnSecion.getCantDulces() > 5) ){
-                throw new RuntimeException();
+                throw new miError("Un usuario tipo niño no puede consumir alimentos");
             }
         }
         contenedores.get(posicionContenedor).quitarAlimento(alimentoAConsumir);
@@ -58,10 +58,11 @@ public class administradorAlimentos {
         }
     }
     public void agregarAlimentoAdministrador(Alimento objAlimento){
+        if(this.usuarioEnSecion == null) throw new miError("Antes de agregar alimentos al admin inicie secion como admin ");
         if (this.usuarioEnSecion.getRol().equals("ADMIN")){
             this.AlimentosDisponibles.add(objAlimento);
         }else {
-            throw new RuntimeException();
+            throw new miError("Para poder agregar alimentos al admin debe ser admin");
         }
     }
 

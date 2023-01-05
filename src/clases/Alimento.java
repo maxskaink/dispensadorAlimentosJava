@@ -24,7 +24,7 @@ public class Alimento {
     public void consumirCantidad(int cantidadAConsumir){
         int cantidadTotal = this.cantidad - cantidadAConsumir;
         if(cantidadTotal<0 ||cantidadAConsumir < 0 ){
-            throw new RuntimeException();
+            throw new miError("No puede consumir una cantidad igual a cero, o mayor a la existente");
         }
         this.cantidad = cantidadTotal;
     }
