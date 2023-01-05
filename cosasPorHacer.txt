@@ -12,7 +12,7 @@ Funciones que hay que realizar:
 - Manejo de Usuarios
     - Que solo el admin pueda agregar o eliminar usuarios(listo)
     - Este se ha de poder hacer desde el admin alimentos (Listo)
-    - Se debe preguntar si el usuario es algun tipo de usuario en especial
+    - Se debe preguntar si el usuario es algun tipo de usuario en especial(Listo)
 
 - Se debe poder agregar o eliminar elementos de la lista por semana o cambiarlo completamente
     - Esta accion solo la poadra hacer el admin

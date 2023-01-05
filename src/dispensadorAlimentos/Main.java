@@ -14,33 +14,39 @@ public class Main {
 
 
             APP.agregarAlimentoAdministrador(new Alimento("manzana", "fruta", 0));
-            APP.agregarAlimentoAdministrador( new Alimento( "pera", "fruta", 5));
-            APP.agregarAlimentoAdministrador( new Alimento( "cebolla", "verdura", 10));
-            APP.agregarAlimentoAdministrador( new Alimento( "chocolate", "dulce", 25));
+            APP.agregarAlimentoAdministrador(new Alimento("pera", "fruta", 5));
+            APP.agregarAlimentoAdministrador(new Alimento("cebolla", "verdura", 10));
+            APP.agregarAlimentoAdministrador(new Alimento("chocolate", "dulce", 25));
 
-            APP.getContenedores().get(0).agregarAlimento( new Alimento("manzana", "fruta", 2 ));
-            APP.getContenedores().get(0).agregarAlimento( new Alimento("manzana", "fruta", 2 ));
-            APP.getContenedores().get(1).agregarAlimento(new Alimento( "pera", "fruta", 5));
-            APP.getContenedores().get(0).agregarAlimento(new Alimento( "cebolla", "verdura", 10));
-            APP.getContenedores().get(2).agregarAlimento(new Alimento( "chocolate", "dulce", 25));
-
-
-            //APP.consumirAlimentoDeContenedor(0, new Alimento("manzana", "fruta", 4));
+            APP.getContenedores().get(0).agregarAlimento(new Alimento("manzana", "fruta", 2));
+            APP.getContenedores().get(0).agregarAlimento(new Alimento("manzana", "fruta", 20));
+            APP.getContenedores().get(1).agregarAlimento(new Alimento("pera", "fruta", 5));
+            APP.getContenedores().get(0).agregarAlimento(new Alimento("cebolla", "verdura", 10));
+            APP.getContenedores().get(2).agregarAlimento(new Alimento("chocolate", "dulce", 25));
 
 
-            APP.añadirUsuario(new Administrador("JUlIO", 9, 23, "MADRE ADOPTIVA CON REGALO"));
-            APP.iniciarSecion(1);
+            APP.consumirAlimentoDeContenedor(2, new Alimento("chocolate", "dulce", 2));
 
-            APP.añadirUsuario(new Administrador("JUlIO", 9, 23, "MADRE ADOPTIVA CON REGALO"));  
 
-            APP.consumirAlimentoDeContenedor(2,new Alimento( "chocolate", "dulce", 2));
 
+            APP.agregarComidaListaSemana(new Alimento("manzana", "fruta",10));
+            APP.agregarComidaListaSemana(new Alimento("chocolate", "dulce",2));
+            APP.agregarComidaListaSemana(new Alimento("pera", "fruta",10));
+
+
+            System.out.println("Lista por semana");
+
+            APP.getListaPorSemana().forEach( alimento -> {
+                System.out.println("- " + alimento.getNombre() + " cantidad: " + alimento.getCantidad());
+            } );
+
+            System.out.println("Usuarios creados");
             APP.getUsuarios().forEach( usuario -> {
 
                 System.out.println(usuario);
             });
 
-
+            System.out.println("Alimentos en contenedores");
             APP.getContenedores().forEach( contenedor ->{
                 System.out.println("\n- " + contenedor.getNombre());
 
@@ -50,7 +56,6 @@ public class Main {
             });
 
 
-            //APP.añadirUsuario();
         }catch (miError e){
             System.out.println(e.msg);
         }

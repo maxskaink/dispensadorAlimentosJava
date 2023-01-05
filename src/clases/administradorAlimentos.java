@@ -7,7 +7,7 @@ public class administradorAlimentos {
     private ArrayList<Contenedor> contenedores= new ArrayList<Contenedor>();
     private ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 
-    private ArrayList<listaSemana> listasPorSemana = new ArrayList<listaSemana>();
+    private ArrayList<Alimento> listasPorSemana = new ArrayList<Alimento>();
 
     private ArrayList<Alimento> AlimentosDisponibles = new ArrayList<Alimento>();
     private Usuario usuarioEnSecion;
@@ -35,17 +35,16 @@ public class administradorAlimentos {
     }
 
     public void agregarContenedor(String nombreContenedor){
-
+        validarAdministrador("USTED NO ES ADMINISTRADOR");
         contenedores.add(new Contenedor(nombreContenedor, this));
     }
+    public void borrarContenedor(Contenedor cont){
+        validarAdministrador("USTED NO ES ADMINISTRADOR");
+        contenedores.remove(cont);
+    }
 
-    public listaSemana getListaPorSemana(){
-        try{
-            int ultimaLista = listasPorSemana.size();
-            return this.listasPorSemana.get(ultimaLista);
-        }catch (Exception e){
-            return new listaSemana("vacio");
-        }
+    public ArrayList<Alimento> getListaPorSemana(){
+        return this.listasPorSemana;
     }
 
     public void borrarAlimentosAdministrador(String nombreAlimento){
@@ -75,22 +74,62 @@ public class administradorAlimentos {
     }
 
     public void añadirUsuario(Usuario usuarioA) {
-        if (!this.usuarioEnSecion.getRol().equals("ADMIN"))
-            throw new miError("USTED NO ES ADMIN, no puede agregar usuarios");
-
+        validarAdministrador("USTED NO ES ADMIN, no puede agregar usuarios");
         this.usuarios.add(usuarioA);
 
     }
     public void eliminarUsuarios(Usuario usuarioA){
-        if (!this.usuarioEnSecion.getRol().equals("ADMIN"))
-            throw new miError("USTED NO ES ADMIN, no puede BORRAR usuarios");
-
+        validarAdministrador("NO ES ADMINISTRADOR, NO PUEDE QUITAR USUARIOS ");
         boolean seBorroUsuario = this.usuarios.remove(usuarioA);
 
         if(!seBorroUsuario) throw new miError("No se encontro el usuario para borrar");
 
     }
     public ArrayList<Usuario> getUsuarios(){ return this.usuarios; }
+    public void validarAdministrador(String mensajeError){
+        if (!this.usuarioEnSecion.getRol().equals("ADMIN"))
+            throw new miError(mensajeError);
 
+    }
+    public void agregarComidaListaSemana(Alimento alimentoAgregar){
+        validarAdministrador("USTED NO ES ADMINISTRADOR, NO PUEDE AGREGAR COMIDA A LA LISTA ");
+        int posicionAlimento = existeAlimentoEn(alimentoAgregar, this.AlimentosDisponibles);
+
+        if(posicionAlimento!=0) listasPorSemana.add(alimentoAgregar);
+        else throw new miError("El alimento que intenta agregar no esta disponible");
+    }
+
+    public void borrarAlimentoListaSemana(Alimento alimentoEliminar){
+        validarAdministrador("USTED NO ES ADMINISTRADOR, NO PUEDE BORAR COMIDA A LA LISTA ");
+        if(this.listasPorSemana.size()==0) throw new miError("no se pude borrar elementos de una lista vacia");
+
+        for (Alimento alimentoActual : this.listasPorSemana) {
+
+            if(alimentoActual.getNombre().equals(alimentoEliminar.getNombre())){
+                alimentoActual.consumirCantidad(alimentoEliminar.getCantidad());
+            }
+            if(alimentoActual.getCantidad()== 0){
+                listasPorSemana.remove(alimentoActual);
+            }
+        }
+
+    }
+
+    public void reiniciarListaPorSemana(){
+        validarAdministrador("Usted no es administrador");
+        for (Alimento alimento : this.listasPorSemana) {
+            this.listasPorSemana.remove(alimento);
+        }
+        System.out.println("La lista por semana se reinicio exitosamente");
+    }
+    private int existeAlimentoEn(Alimento alimentoConsulta, ArrayList<Alimento> alimentosD){
+        if(alimentosD.size()==0) return 0;
+        int posicionAlimento=1;
+        for (Alimento alimento : alimentosD) {
+            if(alimento.getNombre().equals( alimentoConsulta.getNombre())) return posicionAlimento;
+            posicionAlimento++;
+        }
+        return 0;
+    }
 
 }
