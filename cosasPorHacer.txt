@@ -2,20 +2,16 @@ Funciones que hay que realizar:
 
 - Se debe poder agregar y consumir, alimentos al contenedor:
 	- Al agregar alimentos se debe validar que los alimentos existan (listo)
-	- Al agregar alimentos se debe pedir la cantidad
-	- Al consumir alimentos se debe validar que tenga sentido la cantidad extraida
-	- Al consumir alimentos se debe sumar la cantidad de alimentos consumido
-	(Creo que al agregar y consumri alimentos al llamar el metodo que se cree se debe mandar como parametro el objeto haciendo que la cantidad
-	 especifique lo que se va a agregar o retirar y que si se quita la cantidad sea la cantidad que se va a consumir, al mismo tiempo este alimento
-	 se debe agregar al usuario)
-	 - Al agregar alimento se debe validar si ya existe y si existe solo sea sumar la cantidad
-	 - Al quitar alimentos se debe validar que si llega a cero se elimine el alimento.
-	 - Se debe validar que si el usuario es niño no pueda consumir mas de 5 dulces
-	 - Cuando se consuma alimentos este se debe agregar al usuario que haya iniciado secion
+	- Al agregar alimentos se debe pedir la cantidad (Listo)
+	- Al consumir alimentos se debe validar que tenga sentido la cantidad extraida(Listo)
+	- Al consumir alimentos se debe sumar la cantidad de alimentos consumido(Listo)
+	 - Al agregar alimento se debe validar si ya existe y si existe solo sea sumar la cantidad (Listo)
+	 - Al quitar alimentos se debe validar que si llega a cero se elimine el alimento.(listo)
+	 - Se debe validar que si el usuario es niño no pueda consumir mas de 5 dulces(listo)
 
 - Manejo de Usuarios
-    - Que solo el admin pueda agregar o eliminar usuarios
-    - Este se ha de poder hacer desde el admin alimentos
+    - Que solo el admin pueda agregar o eliminar usuarios(listo)
+    - Este se ha de poder hacer desde el admin alimentos (Listo)
     - Se debe preguntar si el usuario es algun tipo de usuario en especial
 
 - Se debe poder agregar o eliminar elementos de la lista por semana o cambiarlo completamente

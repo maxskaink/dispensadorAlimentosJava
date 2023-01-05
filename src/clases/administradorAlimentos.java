@@ -27,8 +27,8 @@ public class administradorAlimentos {
     public void consumirAlimentoDeContenedor(int posicionContenedor,Alimento alimentoAConsumir){
 
         if(this.usuarioEnSecion.getRol().equals("NIÑO")){
-            if( (this.usuarioEnSecion.getCantDulces() > 5) ){
-                throw new miError("Un usuario tipo niño no puede consumir alimentos");
+            if( (this.usuarioEnSecion.getCantDulces() + alimentoAConsumir.getCantidad() > 5 && alimentoAConsumir.getCategoria().equals("dulce"))){
+                throw new miError("Un usuario tipo niño no puede consumir mas de 5 dulces");
             }
         }
         contenedores.get(posicionContenedor).quitarAlimento(alimentoAConsumir);
@@ -73,4 +73,24 @@ public class administradorAlimentos {
     public Usuario getUsuarioEnSecion() {
         return usuarioEnSecion;
     }
+
+    public void añadirUsuario(Usuario usuarioA) {
+        if (!this.usuarioEnSecion.getRol().equals("ADMIN"))
+            throw new miError("USTED NO ES ADMIN, no puede agregar usuarios");
+
+        this.usuarios.add(usuarioA);
+
+    }
+    public void eliminarUsuarios(Usuario usuarioA){
+        if (!this.usuarioEnSecion.getRol().equals("ADMIN"))
+            throw new miError("USTED NO ES ADMIN, no puede BORRAR usuarios");
+
+        boolean seBorroUsuario = this.usuarios.remove(usuarioA);
+
+        if(!seBorroUsuario) throw new miError("No se encontro el usuario para borrar");
+
+    }
+    public ArrayList<Usuario> getUsuarios(){ return this.usuarios; }
+
+
 }

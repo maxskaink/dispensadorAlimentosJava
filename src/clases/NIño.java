@@ -15,7 +15,7 @@ public class NIño extends Usuario{
     public void setCantDulces(int cantDulces) {
         this.cantDulces = cantDulces;
     }
-    public String setRol(){
+    public String getRol(){
         return "NIÑO";
     }
 }

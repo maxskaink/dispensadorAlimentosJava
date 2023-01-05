@@ -1,9 +1,6 @@
 package dispensadorAlimentos;
 
-import clases.Alimento;
-import clases.Contenedor;
-import clases.administradorAlimentos;
-import clases.miError;
+import clases.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,7 +9,7 @@ public class Main {
 
             APP.iniciarSecion(0);
             APP.agregarContenedor("Nevera");
-            APP.agregarContenedor("Cojon Amarillo");
+            APP.agregarContenedor("Cajon Amarillo");
             APP.agregarContenedor("Tarro 2");
 
 
@@ -28,7 +25,20 @@ public class Main {
             APP.getContenedores().get(2).agregarAlimento(new Alimento( "chocolate", "dulce", 25));
 
 
-            APP.consumirAlimentoDeContenedor(0, new Alimento("manzana", "fruta", 4));
+            //APP.consumirAlimentoDeContenedor(0, new Alimento("manzana", "fruta", 4));
+
+
+            APP.añadirUsuario(new Administrador("JUlIO", 9, 23, "MADRE ADOPTIVA CON REGALO"));
+            APP.iniciarSecion(1);
+
+            APP.añadirUsuario(new Administrador("JUlIO", 9, 23, "MADRE ADOPTIVA CON REGALO"));  
+
+            APP.consumirAlimentoDeContenedor(2,new Alimento( "chocolate", "dulce", 2));
+
+            APP.getUsuarios().forEach( usuario -> {
+
+                System.out.println(usuario);
+            });
 
 
             APP.getContenedores().forEach( contenedor ->{
@@ -39,6 +49,8 @@ public class Main {
                 } );
             });
 
+
+            //APP.añadirUsuario();
         }catch (miError e){
             System.out.println(e.msg);
         }

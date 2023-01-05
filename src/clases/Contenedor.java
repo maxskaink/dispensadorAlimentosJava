@@ -29,7 +29,8 @@ public class Contenedor {
             if(existeAlimentoEn(objAlimento, adminAlimentos.getAlimentosDisponibles()) != 0){
                 existeAlimento.set(true);
                 this.alimentosDisponibles.add( objAlimento );
-                this.alimentosDisponibles.get( this.alimentosDisponibles.size() ).asignarContenedor(this);
+                this.alimentosDisponibles.get( this.alimentosDisponibles.size()-1 ).asignarContenedor(this);
+
             }
         }
 
@@ -37,6 +38,7 @@ public class Contenedor {
     }
 
     private int existeAlimentoEn(Alimento alimentoConsulta, ArrayList<Alimento> alimentosD){
+        if(alimentosD.size()==0) return 0;
         int posicionAlimento=1;
         for (Alimento alimento : alimentosD) {
             if(alimento.getNombre().equals( alimentoConsulta.getNombre())) return posicionAlimento;
@@ -54,6 +56,7 @@ public class Contenedor {
                 if(alimentoActual.getCantidad()== 0){
                     alimentosDisponibles.remove(contador);
                 }
+                this.adminAlimentos.getUsuarioEnSecion().consumirAlimento(alimentoAQuitar);
             }
     }
 
