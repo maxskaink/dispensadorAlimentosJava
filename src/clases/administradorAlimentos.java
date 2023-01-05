@@ -1,4 +1,4 @@
-package dispensadorAlimento;
+package clases;
 
 import java.util.ArrayList;
 
@@ -24,12 +24,19 @@ public class administradorAlimentos {
         return contenedores;
     }
 
-    public void consumirAlimentoDeContenedor(int posicionContenedor, String nombreAlimento, int cantidadConusmo){
-        contenedores.get(posicionContenedor).quitarAlimento(nombreAlimento, cantidadConusmo);
+    public void consumirAlimentoDeContenedor(int posicionContenedor,Alimento alimentoAConsumir){
+
+        if(this.usuarioEnSecion.getRol().equals("NIÑO")){
+            if( (this.usuarioEnSecion.getCantDulces() > 5) ){
+                throw new miError("Un usuario tipo niño no puede consumir alimentos");
+            }
+        }
+        contenedores.get(posicionContenedor).quitarAlimento(alimentoAConsumir);
     }
 
     public void agregarContenedor(String nombreContenedor){
-        contenedores.add(new Contenedor(nombreContenedor));
+
+        contenedores.add(new Contenedor(nombreContenedor, this));
     }
 
     public listaSemana getListaPorSemana(){
@@ -51,11 +58,16 @@ public class administradorAlimentos {
         }
     }
     public void agregarAlimentoAdministrador(Alimento objAlimento){
-        if (this.usuarioEnSecion.setRol().equals("ADMIN")){
+        if(this.usuarioEnSecion == null) throw new miError("Antes de agregar alimentos al admin inicie secion como admin ");
+        if (this.usuarioEnSecion.getRol().equals("ADMIN")){
             this.AlimentosDisponibles.add(objAlimento);
         }else {
-            throw new RuntimeException();
+            throw new miError("Para poder agregar alimentos al admin debe ser admin");
         }
+    }
+
+    public ArrayList<Alimento> getAlimentosDisponibles(){
+        return this.AlimentosDisponibles;
     }
 
     public Usuario getUsuarioEnSecion() {
