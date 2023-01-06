@@ -125,20 +125,24 @@ public class administradorAlimentos {
 
     public ArrayList<Alimento> consultarListaDeCompras(){
 
-        final ArrayList<Alimento> listaCompra = new ArrayList<>(this.listasPorSemana);
+        ArrayList<Alimento> listaCompra = new ArrayList<Alimento>();
 
         for (Contenedor contenedorActual : contenedores) {
             for (Alimento alimentoActual : contenedorActual.getAlimentosDisponibles()) {
 
-                int posicionAlimento = existeAlimentoEn(alimentoActual, listaCompra);
+                int posicionAlimento = existeAlimentoEn(alimentoActual, listasPorSemana);
 
                 if(posicionAlimento!=0){
                     try{
-                        listaCompra.get(posicionAlimento-1).consumirCantidad(alimentoActual.getCantidad());
+                        Alimento alimentoEncontrado = listasPorSemana.get(posicionAlimento-1);
+                        Alimento alimentoTemp = new Alimento(alimentoEncontrado.getNombre(),
+                                                             alimentoEncontrado.getCategoria(),
+                                                             alimentoEncontrado.getCantidad());
+                        alimentoTemp.consumirCantidad(alimentoActual.getCantidad());
+                        listaCompra.add(alimentoTemp);
                     }catch (miError e) {
-                        listaCompra.remove(posicionAlimento-1);
-                    }
 
+                    }
                 }
             }
         }
