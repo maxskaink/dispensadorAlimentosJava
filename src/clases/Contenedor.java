@@ -34,7 +34,7 @@ public class Contenedor {
             }
         }
 
-        if(!existeAlimento.get()) throw new miError("El alimento que desea agregar debe esstar en el administrador");
+        if(!existeAlimento.get()) throw new miError("El alimento " + objAlimento.getNombre() + " debe esstar en el administrador");
     }
 
     private int existeAlimentoEn(Alimento alimentoConsulta, ArrayList<Alimento> alimentosD){

@@ -1,6 +1,6 @@
 package clases;
 
-public class Alimento {
+public class Alimento  {
 
     private String nombre;
     private int cantidad;

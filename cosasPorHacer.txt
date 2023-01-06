@@ -15,8 +15,8 @@ Funciones que hay que realizar:
     - Se debe preguntar si el usuario es algun tipo de usuario en especial(Listo)
 
 - Se debe poder agregar o eliminar elementos de la lista por semana o cambiarlo completamente
-    - Esta accion solo la poadra hacer el admin
-    - Ademas se debe poder consultar la ultima lista por semana que haya
+    - Esta accion solo la poadra hacer el admin (Listo)
+    - Ademas se debe poder consultar la ultima lista por semana que haya(Lista)
 
 - Debe haber una funcion que muestre los elementos que faltan en la lista por semana (Lista de compra)
 - El admin es el unico que pueda agregar contenedores?

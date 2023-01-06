@@ -96,7 +96,7 @@ public class administradorAlimentos {
         int posicionAlimento = existeAlimentoEn(alimentoAgregar, this.AlimentosDisponibles);
 
         if(posicionAlimento!=0) listasPorSemana.add(alimentoAgregar);
-        else throw new miError("El alimento que intenta agregar no esta disponible");
+        else throw new miError("El alimento"+ alimentoAgregar.getNombre() + " no esta disponible");
     }
 
     public void borrarAlimentoListaSemana(Alimento alimentoEliminar){
@@ -121,6 +121,29 @@ public class administradorAlimentos {
             this.listasPorSemana.remove(alimento);
         }
         System.out.println("La lista por semana se reinicio exitosamente");
+    }
+
+    public ArrayList<Alimento> consultarListaDeCompras(){
+
+        final ArrayList<Alimento> listaCompra = new ArrayList<>(this.listasPorSemana);
+
+        for (Contenedor contenedorActual : contenedores) {
+            for (Alimento alimentoActual : contenedorActual.getAlimentosDisponibles()) {
+
+                int posicionAlimento = existeAlimentoEn(alimentoActual, listaCompra);
+
+                if(posicionAlimento!=0){
+                    try{
+                        listaCompra.get(posicionAlimento-1).consumirCantidad(alimentoActual.getCantidad());
+                    }catch (miError e) {
+                        listaCompra.remove(posicionAlimento-1);
+                    }
+
+                }
+            }
+        }
+
+        return listaCompra;
     }
     private int existeAlimentoEn(Alimento alimentoConsulta, ArrayList<Alimento> alimentosD){
         if(alimentosD.size()==0) return 0;
