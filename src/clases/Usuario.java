@@ -1,7 +1,6 @@
 package clases;
 
 import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Usuario {
 
@@ -30,12 +29,12 @@ public class Usuario {
 
     public void consumirAlimento(Alimento alimentoAConsumir){
 
-        int posicionAlimentoExistente = existeAlimentoEn(alimentoAConsumir, this.alimentosConsumidos);
+        int posicionAlimentoExistente = existeAlimentoEn(alimentoAConsumir, this.getAlimentosConsumidos());
 
         if (posicionAlimentoExistente != 0)
-            this.alimentosConsumidos.get(posicionAlimentoExistente-1).aumentarCantidad(alimentoAConsumir.getCantidad());
+            this.getAlimentosConsumidos().get(posicionAlimentoExistente-1).aumentarCantidad(alimentoAConsumir.getCantidad());
         else
-            this.alimentosConsumidos.add( alimentoAConsumir );
+            this.getAlimentosConsumidos().add( alimentoAConsumir );
 
     }
     private int existeAlimentoEn(Alimento alimentoConsulta, ArrayList<Alimento> alimentosD){
@@ -60,5 +59,13 @@ public class Usuario {
 
     public int getCantDulces() {
         return 0;
+    }
+
+    public ArrayList<Alimento> getAlimentosConsumidos() {
+        return alimentosConsumidos;
+    }
+
+    public void setAlimentosConsumidos(ArrayList<Alimento> alimentosConsumidos) {
+        this.alimentosConsumidos = alimentosConsumidos;
     }
 }

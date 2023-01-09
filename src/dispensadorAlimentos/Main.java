@@ -9,7 +9,7 @@ public class Main {
 
             APP.iniciarSecion(0);
             APP.agregarContenedor("Nevera");
-            
+
             APP.agregarContenedor("Cajon Amarillo");
             APP.agregarContenedor("Tarro 2");
 
@@ -39,7 +39,7 @@ public class Main {
             APP.agregarComidaListaSemana(new Alimento("cebolla", "verdura",20));
             APP.agregarComidaListaSemana(new Alimento("CarneDeBufalo", "Carnes",40));
 
-            APP.borrarAlimentosAdministrador("cebolla");
+            
 
 
             System.out.println("Lista de compras");
