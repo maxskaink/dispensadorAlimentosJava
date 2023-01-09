@@ -1,22 +1,15 @@
 package clases;
 
 public class   Administrador  extends Usuario{
-    private String rol;
-    public Administrador(String nom, int cant, int ed, String rol) {
-        super(nom, cant, ed);
-        this.rol = rol;
 
+    public Administrador(String nombre, int cantidad, int edad) {
+        super(nombre, cantidad, edad);
     }
 
 
 
     //GIT AND GETTERS
-    public String getRolAdmin() {
-        return rol;
-    }
-    public void setRolAdmin(String rol) {
-        this.rol = rol;
-    }
+
     public String getRol(){
         return "ADMIN";
     }
